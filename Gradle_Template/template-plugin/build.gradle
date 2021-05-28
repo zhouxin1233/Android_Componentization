@@ -1,0 +1,70 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'groovy'
+}
+sourceCompatibility = 1.8
+gradlePlugin{
+    plugins{
+        zxApplication{
+            id = 'com.zx.application'
+            implementationClass = 'com.zx.template.ZxAppPlugin'
+        }
+        zxLibrary{
+            id = 'com.zx.library'
+            implementationClass = 'com.zx.template.ZxLibraryPlugin'
+        }
+        zxDeps{
+            id = 'com.zx.deps'
+            implementationClass = 'com.yupaopao.ModuleImporterPlugin'
+        }
+    }
+}
+dependencies {
+    //we will use the Groovy version that ships with Gradle:
+    implementation localGroovy()
+    //our plugin requires Gradle API interfaces and classes to compile:
+    implementation gradleApi()
+    // 如果要实现Transform，需要引用该类
+    implementation  "com.android.tools.build:gradle:$ANDROID_GRADLE_VERSION"
+    implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
+}
+
+task sourceJar(type: Jar) {
+//    from sourceSets.main.groovy  // todo:zx 试试这个
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+
+}
+
+publishing {
+    Properties pomProps = new Properties()
+    pomProps.load(new FileInputStream("${projectDir}/pom.properties"))
+
+    publications {
+        myPublication(MavenPublication) {
+            from components.java
+            artifact sourceJar  //配置上传源码
+            groupId = pomProps.groupId
+            artifactId = pomProps.artifactId
+            version = pomProps.version
+        }
+    }
+    repositories {
+        maven {
+            if (IS_LOCAL_MAVEN.toBoolean()){
+                url = MAVEN_LOCAL_URL
+            }else {
+                url = MAVEN_URL
+                credentials{
+                    username  pomProps.username
+                    password  pomProps.password
+                }
+            }
+
+        }
+
+    }
+}
+
+// 学习 https://kimzing.blog.csdn.net/article/details/78917855?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-12.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-12.control
