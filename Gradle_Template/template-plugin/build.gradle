@@ -26,13 +26,14 @@ dependencies {
     //our plugin requires Gradle API interfaces and classes to compile:
     implementation gradleApi()
     // 如果要实现Transform，需要引用该类
-    implementation  "com.android.tools.build:gradle:$ANDROID_GRADLE_VERSION"
+    implementation "com.android.tools.build:gradle:$ANDROID_GRADLE_VERSION"
     implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
+    implementation "com.alibaba:arouter-register:1.0.2"
 }
 
 task sourceJar(type: Jar) {
-//    from sourceSets.main.groovy  // todo:zx 试试这个
-    from sourceSets.main.allJava
+    from sourceSets.main.groovy  // todo:zx 试试这个
+//    from sourceSets.main.allJava
     archiveClassifier = "sources"
 
 }
@@ -45,9 +46,10 @@ publishing {
         myPublication(MavenPublication) {
             from components.java
             artifact sourceJar  //配置上传源码
+            group pomProps.groupId
             groupId = pomProps.groupId
             artifactId = pomProps.artifactId
-            version = pomProps.version
+            version =pomProps.version
         }
     }
     repositories {
