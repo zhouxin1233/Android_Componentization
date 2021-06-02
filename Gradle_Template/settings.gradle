@@ -1,3 +1,4 @@
 rootProject.name = "Gragdle_Template"
 include ':app'
 include ':template-plugin'
+include ':mylibrary'

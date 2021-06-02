@@ -1,5 +1,6 @@
 package com.zx.template
 
+
 import com.alibaba.android.arouter.register.launch.PluginLaunch
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.BaseExtension
@@ -15,7 +16,6 @@ import org.jetbrains.kotlin.gradle.internal.Kapt3GradleSubplugin
 import org.jetbrains.kotlin.gradle.plugin.KaptAnnotationProcessorOptions
 import org.jetbrains.kotlin.gradle.plugin.KaptExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinAndroidPluginWrapper
-
 
 abstract class ProjectPlugin implements Plugin<Project>{
     abstract boolean isApplication()
