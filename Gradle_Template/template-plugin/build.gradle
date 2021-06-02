@@ -16,7 +16,7 @@ gradlePlugin{
         }
         zxDeps{
             id = 'com.zx.deps'
-            implementationClass = 'com.yupaopao.ModuleImporterPlugin'
+            implementationClass = 'com.zx.template.ModuleImporterPlugin'
         }
     }
 }

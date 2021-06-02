@@ -42,15 +42,17 @@ class ZxLibraryPlugin extends ProjectPlugin {
         sourceJar.getArchiveClassifier().set("sources")
 //        task.classifier = "sources"
         sourceJar.from(project.android.sourceSets.main.java.srcDirs)
-        project.artifacts {
-            archives sourceJar
-        }
+//        project.artifacts {
+//            archives sourceJar
+//        }
 
         project.afterEvaluate {
             for (SoftwareComponent components : project.components) {
                 publishing.publications({ publications ->
                     publications.create(components.name, MavenPublication.class, { MavenPublication publication ->
                         project.group = pomProps.groupId
+                        publication.artifact(sourceJar)
+
                         publication.groupId = pomProps.groupId
                         publication.artifactId = pomProps.artifactId
                         publication.version = pomProps.version
