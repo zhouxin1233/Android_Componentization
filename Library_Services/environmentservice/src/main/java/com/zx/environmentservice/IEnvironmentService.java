@@ -56,4 +56,8 @@ public interface IEnvironmentService extends IProvider {
     default String getBuildTime() {
         return String.valueOf(System.currentTimeMillis());
     }
+    /**
+     * @return 返回Flavor
+     */
+    String getFlavor();
 }

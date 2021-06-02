@@ -64,6 +64,11 @@ public class EnvironmentService implements IEnvironmentService{
     }
 
     @Override
+    public String getFlavor() {
+        return this.wrappedEnvironmentService.getFlavor();
+    }
+
+    @Override
     public void init(Context context) {
 
     }

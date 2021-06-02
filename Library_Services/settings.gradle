@@ -1,3 +1,4 @@
 rootProject.name = "Library_Services"
 include ':app'
 include ':environmentservice'
+include ':debugservice'
