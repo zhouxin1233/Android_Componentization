@@ -1,4 +1,5 @@
-rootProject.name = "Library_Services"
+rootProject.name = "Library_Core"
 include ':app'
 include ':environmentservice'
 include ':debugservice'
+include ':moduleinit'
