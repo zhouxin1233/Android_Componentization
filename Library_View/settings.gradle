@@ -1,0 +1,3 @@
+rootProject.name = "Library_View"
+include ':app'
+include ':view'
