@@ -1,4 +1,4 @@
-package com.zx.util.base;
+package com.zx.environmentservice.util;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
