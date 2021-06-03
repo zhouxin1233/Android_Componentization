@@ -9,7 +9,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.zx.template:template-plugin:0.25"
+        classpath "com.zx.template:template-plugin:0.27"
     }
 }
 
