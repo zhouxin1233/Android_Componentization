@@ -8,7 +8,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.zx.template:template-plugin:0.24"
+        classpath "com.zx.template:template-plugin:0.33"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -25,7 +25,68 @@ allprojects {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
+subprojects {
+    if (project.name == "app") {
+        apply plugin: 'com.zx.application'
+    } else {
+        apply plugin: 'com.zx.library'
+    }
 
+    android {
+        flavorDimensions("env","api")
+        productFlavors {
+            issue {
+                dimension "env"
+                buildConfigField("boolean", "TEST", "false")
+                buildConfigField("String", "CHANNEL", "\"\"")
+            }
+            inner {
+                dimension "env"
+                buildConfigField("boolean", "TEST", "true")
+                buildConfigField("String", "CHANNEL", "\"\"")
+            }
+            arm32 {
+                dimension "api"
+                buildConfigField("String", "CHANNEL", "\"\"")
+                buildConfigField("String", "ABI", "\"arm32\"")
+                ndk.abiFilters  'armeabi-v7a'
+            }
+            arm64V8a {
+                dimension "api"
+                buildConfigField("String", "CHANNEL", "\"\"")
+                buildConfigField("String", "ABI", "\"arm64V8a\"")
+                ndk.abiFilters 'arm64-v8a'
+            }
+            googleplay {
+                dimension "api"
+                buildConfigField("String", "CHANNEL", "\"bx-google-play\"")
+                buildConfigField("String", "ABI", "\"armAll\"")
+                ndk.abiFilters 'arm64-v8a', 'armeabi-v7a'
+
+                //google play bundle 脚本，暂时先注释会影响module local
+                if (isGooglePlayPackage()){
+                    bundle {
+                        language {
+                            enableSplit = false
+                        }
+                        density {
+                            enableSplit = true
+                        }
+                        abi {
+                            enableSplit = false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+def static isGooglePlayPackage(){
+    return false
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+// 将settings.gradle里面 导入源码工程 根据 module.local 进行本地替换
+apply plugin: 'com.zx.moduleimporter'

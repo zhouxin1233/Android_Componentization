@@ -1,4 +1,4 @@
-package com.zx.android_app
+package com.zx.library_view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

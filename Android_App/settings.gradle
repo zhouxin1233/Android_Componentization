@@ -1,2 +1,17 @@
 rootProject.name = "Android_App"
 include ':app'
+buildscript {
+    repositories {
+        maven {
+            url MAVEN_LOCAL_URL
+        }
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.zx.template:template-plugin:0.33"
+    }
+}
+
+// 读取module.local 导入源码工程
+apply plugin: 'com.zx.moduleimporter'
