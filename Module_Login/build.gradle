@@ -1,0 +1,32 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        kotlin_version = '1.5.10'
+    }
+    repositories {
+        maven {
+            url MAVEN_LOCAL_URL
+        }
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.zx.template:template-plugin:0.33"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url MAVEN_LOCAL_URL
+        }
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
