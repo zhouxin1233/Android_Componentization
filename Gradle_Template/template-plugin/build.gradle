@@ -15,7 +15,7 @@ gradlePlugin{
             implementationClass = 'com.zx.template.ZxLibraryPlugin'
         }
         zxDeps{
-            id = 'com.zx.deps'
+            id = 'com.zx.moduleimporter'
             implementationClass = 'com.zx.template.ModuleImporterPlugin'
         }
     }
