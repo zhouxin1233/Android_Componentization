@@ -1,25 +1,24 @@
-# Android_Componentization
+# Android_Componentization 
 
 #### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+{**Android组件化方案**
+Android_Componentization 是自己工作几年来遇到的比较好的一种组件化方案。项目源码请看 [https://gitee.com/zhouxin1233/android_componentization](https://gitee.com/zhouxin1233/android_componentization)}
 
 #### 软件架构
 Android组件化架构
+1.  壳工程:    Android_App
+2.  业务模块:   Module_Home,Module_Splash,Module_Login
+3.  基础View:  Library_View
+4.  核心库:    Library_Core
+5.  基础工具类:  Library_Base
 
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  组件化实现的核心在 Gradle_Template工程中
+2.  本地源码 和aar 切换 通过 module.local 文件配置， 具体可参考Android_App 根目录下module.local文件
+3.  各个某块打包上传 是依赖 pom.properties配置， 本地仓库需要将 MAVEN_LOCAL_URL改成本地的文件夹路径(gradle.properties 和 各个lib
+    /module 下的 pom.properties)
 
 #### 参与贡献
 
@@ -30,10 +29,7 @@ Android组件化架构
 
 
 #### 特技
+1.  如果有疑问 请与我交流 微信： 1217104365
+    <img src="https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg" />
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+2.  ![这是一种鼓励](https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg)
