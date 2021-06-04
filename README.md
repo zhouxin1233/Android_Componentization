@@ -30,6 +30,6 @@ Android组件化架构
 
 #### 特技
 1.  如果有疑问 请与我交流 微信： 1217104365
-    <img src="https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg" />
+    <img src="https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg" alt="图片替换文本" width="100" height="30" align="bottom" />
 
 2.  ![这是一种鼓励](https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg)
