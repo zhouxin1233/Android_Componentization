@@ -12,24 +12,18 @@ Android组件化架构
 4.  核心库:    Library_Core
 5.  基础工具类:  Library_Base
 
+组件化实现的核心在 Gradle_Template工程中
+
 
 #### 使用说明
 
-1.  组件化实现的核心在 Gradle_Template工程中
-2.  本地源码 和aar 切换 通过 module.local 文件配置， 具体可参考Android_App 根目录下module.local文件
-3.  各个某块打包上传 是依赖 pom.properties配置， 本地仓库需要将 MAVEN_LOCAL_URL改成本地的文件夹路径(gradle.properties 和 各个lib
-    /module 下的 pom.properties)
+1.  导入Gradle_Template，将gradle.properties 和 pom.properties 中 MAVEN_LOCAL_URL 修改成你自己的本地仓库地址
+2.  生成组件化plugin：编译Gradle_Template工程 上传组件化plugin到本地仓库
+3.  使用组件化plugin：本地源码 和aar 切换 通过 module.local 文件配置， 具体可参考Android_App 根目录下module.local文件
 
-#### 参与贡献
+各个模块打包上传 是依赖 pom.properties配置 实现的
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+#### 感谢
+  如果有疑问 请与我交流 微信： 1217104365
 
-
-#### 特技
-1.  如果有疑问 请与我交流 微信： 1217104365
-    <img src="https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg" alt="图片替换文本" width="100" height="30" align="bottom" />
-
-2.  ![这是一种鼓励](https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg)
+  <img src="https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg" alt="这是一种鼓励" width="400" height="400" align="bottom" />
