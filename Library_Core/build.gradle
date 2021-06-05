@@ -3,7 +3,10 @@ buildscript {
     ext.kotlin_version = "1.5.10"
     repositories {
         maven {
-            url MAVEN_LOCAL_URL
+            url mavenLocalUrl
+        }
+        maven {
+            url mavenUrl
         }
         google()
         mavenCentral()
@@ -16,7 +19,10 @@ buildscript {
 allprojects {
     repositories {
         maven {
-            url MAVEN_LOCAL_URL
+            url mavenLocalUrl
+        }
+        maven {
+            url mavenUrl
         }
         google()
         mavenCentral()

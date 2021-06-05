@@ -5,7 +5,10 @@ buildscript {
     }
     repositories {
         maven {
-            url MAVEN_LOCAL_URL
+            url mavenLocalUrl
+        }
+        maven {
+            url mavenUrl
         }
         google()
         mavenCentral()
@@ -19,7 +22,10 @@ buildscript {
 allprojects {
     repositories {
         maven {
-            url MAVEN_LOCAL_URL
+            url mavenLocalUrl
+        }
+        maven {
+            url mavenUrl
         }
         google()
         mavenCentral()
