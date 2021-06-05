@@ -14,7 +14,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.zx.template:template-plugin:0.33"
+        classpath "com.zx.template:template-plugin:0.35"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
