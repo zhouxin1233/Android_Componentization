@@ -34,7 +34,7 @@ class ModuleImporterPlugin implements Plugin<PluginAware> {
                         }else{
                             println "找到模块:$moduleName,路径:$path"
                         }
-                        String projectName = path.find("[^/]*\$")  //path.substring(path.lastIndexOf("/")+1)
+                        String projectName = path.find("[^/\\\\]*\$")  //path.substring(path.lastIndexOf("/")+1)
                         println "ProjectName: $projectName"
                         target.include ":${projectName}"
                         target.project(":${projectName}").projectDir = new File(path)
@@ -53,7 +53,7 @@ class ModuleImporterPlugin implements Plugin<PluginAware> {
                     if (names.length >= 2) {
                         String moduleName = names[0]
                         String path = names[1]
-                        String projectName = path.find("[^/]*\$")
+                        String projectName = path.find("[^/\\\\]*\$")
                         externalDeps.put(moduleName, projectName)
                         externalDepModule.add(moduleName)
                     }
