@@ -53,7 +53,7 @@ dependencies {
 
     // 4 module层： 涉及业务模块
 
-    implementation 'com.zx.android.module:module_splash:0.3'
+    implementation 'com.zx.android.module:module_splash:0.4'
     implementation 'com.zx.android.module:module_home:0.2'
     implementation 'com.zx.android.module:module_login:0.1'
 

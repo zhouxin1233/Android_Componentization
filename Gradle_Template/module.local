@@ -1,5 +1,6 @@
 // mac配置格式
-com.zx.mylibrary:mylibrary:0.1 => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Gradle_Template/mylibrary
+#com.zx.mylibrary:mylibrary:0.1 => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Gradle_Template/mylibrary
 
-// windows配置格式
+// windows配置格式 正反斜线
 #com.zx.mylibrary:mylibrary:0.1 => C:/workspace/Android/Demo/android_componentization/Gradle_Template/mylibrary
+#com.zx.mylibrary:mylibrary:0.1 => C:\workspace\Android\Demo\android_componentization\Gradle_Template\mylibrary

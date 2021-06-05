@@ -15,7 +15,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.zx.template:template-plugin:0.35"
+        classpath "com.zx.template:template-plugin:$TEMPLATE_PLUGIN_VERSION"
     }
 }
 apply plugin: 'com.zx.moduleimporter'
