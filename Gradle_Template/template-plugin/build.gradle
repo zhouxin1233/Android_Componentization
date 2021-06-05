@@ -54,10 +54,10 @@ publishing {
     }
     repositories {
         maven {
-            if (IS_LOCAL_MAVEN.toBoolean()){
-                url = MAVEN_LOCAL_URL
+            if (pomProps.isLocalMaven.toBoolean()){
+                url = pomProps.mavenLocalUrl
             }else {
-                url = MAVEN_URL
+                url = pomProps.mavenUrl
                 credentials{
                     username  pomProps.username
                     password  pomProps.password

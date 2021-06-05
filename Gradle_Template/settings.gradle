@@ -6,13 +6,16 @@ include ':mylibrary'
 buildscript {
     repositories {
         maven {
-            url MAVEN_LOCAL_URL
+            url mavenLocalUrl
+        }
+        maven {
+            url mavenUrl
         }
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.zx.template:template-plugin:0.32"
+        classpath "com.zx.template:template-plugin:0.33"
     }
 }
 apply plugin: 'com.zx.moduleimporter'

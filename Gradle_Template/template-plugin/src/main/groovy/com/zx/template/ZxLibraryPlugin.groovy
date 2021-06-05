@@ -2,8 +2,8 @@ package com.zx.template
 
 import com.zx.template.extension.ZxExtension
 import org.gradle.api.Project
+import org.gradle.api.artifacts.repositories.MavenArtifactRepository
 import org.gradle.api.component.SoftwareComponent
-import org.gradle.api.plugins.MavenPlugin
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
@@ -67,12 +67,12 @@ class ZxLibraryPlugin extends ProjectPlugin {
             }
 
             publishing.repositories { artifactRepositories ->
-                artifactRepositories.maven { mavenArtifactRepository ->
+                artifactRepositories.maven { MavenArtifactRepository mavenArtifactRepository ->
 
-                    if (pomProps.IS_LOCAL_MAVEN.toBoolean()) {
-                        mavenArtifactRepository.url = pomProps.MAVEN_LOCAL_URL
+                    if (pomProps.isLocalMaven.toBoolean()) {
+                        mavenArtifactRepository.url = pomProps.mavenLocalUrl
                     } else {
-                        mavenArtifactRepository.url = pomProps.MAVEN_URL
+                        mavenArtifactRepository.url = pomProps.mavenUrl
                         mavenArtifactRepository.credentials {
                             credentials ->
                                 credentials.username = pomProps.username
