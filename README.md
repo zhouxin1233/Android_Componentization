@@ -1,8 +1,8 @@
 # Android_Componentization 
 
 #### 介绍
-{**Android组件化方案**
-Android_Componentization 是自己工作几年来遇到的比较好的一种组件化方案。项目源码请看 [https://gitee.com/zhouxin1233/android_componentization](https://gitee.com/zhouxin1233/android_componentization)}
+{**Android组件化方案：**
+Android_Componentization 是自己工作几年来遇到的比较好的一种组件化方案。}
 
 #### 软件架构
 Android组件化架构
@@ -17,7 +17,7 @@ Android组件化架构
 
 #### 使用说明
 
-1.  导入Gradle_Template，将gradle.properties 和 pom.properties 中 MAVEN_LOCAL_URL 修改成你自己的本地仓库地址
+1.  导入Gradle_Template，将gradle.properties 和 pom.properties 中 mavenLocalUrl 修改成你自己的本地仓库地址
 2.  生成组件化plugin：编译Gradle_Template工程 上传组件化plugin到本地仓库
 3.  使用组件化plugin：本地源码 和aar 切换 通过 module.local 文件配置， 具体可参考Android_App 根目录下module.local文件
 
@@ -26,4 +26,4 @@ Android组件化架构
 #### 感谢
   如果有疑问 请与我交流 微信： 1217104365
 
-  <img src="https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg" alt="这是一种鼓励" width="400" height="400" align="bottom" />
+  <img src="https://gitee.com/zhouxin1233/android_componentization/raw/master/Library_View/view/src/main/res/drawable-xxhdpi/reward.jpg" alt="这是一种鼓励" width="300" height="300" align="bottom" />
