@@ -27,7 +27,7 @@ dependencies {
     // 如果要实现Transform，需要引用该类
     implementation "com.android.tools.build:gradle:$ANDROID_GRADLE_VERSION"
     implementation "org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION"
-    implementation "com.alibaba:arouter-register:2.0.0"
+    implementation "com.alibaba:arouter-gradle-plugin:2.0.0"
 }
 
 task sourceJar(type: Jar) {

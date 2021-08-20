@@ -52,7 +52,7 @@ class LogTransform extends Transform{
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
-        println "zhouxin Log transform start"
+        println "zhouxin Log transform start   transformInvocation.inputs.size ${ transformInvocation.inputs.size()}"
         long start = System.currentTimeMillis()
         if (!transformInvocation.isIncremental()){
             transformInvocation.outputProvider.deleteAll()
@@ -65,11 +65,17 @@ class LogTransform extends Transform{
                 handleDirectoryInput(transformInvocation.incremental, directoryInput, transformInvocation.outputProvider)
             }
             // 处理jar
+//            long jarStart = System.currentTimeMillis()
+//            it.jarInputs.each { JarInput jarInput ->
+//                println  "jarInput 信息 ${jarInput.file.name} ${jarInput.name}"
+//            }
             it.jarInputs.each { JarInput jarInput ->
                 handleJarInputs(transformInvocation.incremental, jarInput, transformInvocation.outputProvider)
 
             }
 
+//            long jarEnd = System.currentTimeMillis()
+//            println("zhouxin  Log transform jarInputs  耗时${(jarEnd-jarStart)/1000}")
         }
         println("zhouxin  Log transform  ${transformInvocation.isIncremental()}  end 耗时${(System.currentTimeMillis()-start)/1000}")
     }
@@ -79,6 +85,11 @@ class LogTransform extends Transform{
     static void handleDirectoryInput(boolean incremental, DirectoryInput directoryInput, TransformOutputProvider outputProvider) {
         def dest = outputProvider.getContentLocation(directoryInput.name, directoryInput.contentTypes, directoryInput.scopes,
                 Format.DIRECTORY)
+        String root = directoryInput.file.absolutePath
+        boolean leftSlash = File.separator == '/'
+        if (!root.endsWith(File.separator))
+            root += File.separator
+
         if (incremental) {
             Map<File, Status> map = directoryInput.getChangedFiles()
             File dir = directoryInput.file
@@ -93,8 +104,12 @@ class LogTransform extends Transform{
                 if (status == Status.REMOVED) {
                     destFile.delete()
                 } else if (status == Status.CHANGED || status == Status.ADDED) {
-                    def name = file.name
-                    if (HOOK_CLASS == name) {
+                    def path = file.absolutePath.replace(root, '')
+                    if (!leftSlash) {
+                        path = path.replaceAll("\\\\", "/")
+                    }
+//                    println("zhouxin handleDirectoryInput $incremental status:$status  path:  $path ")
+                    if (HOOK_CLASS == path) {
                         println("zhouxin handleDirectoryInput incremental: $incremental  found")
                         def scanFile = new FileInputStream(file)
                         ClassReader classReader = new ClassReader(scanFile)
@@ -106,18 +121,19 @@ class LogTransform extends Transform{
                 }
             }
         } else {
-            if (directoryInput.file.isDirectory()) {
-                directoryInput.file.eachFileRecurse { File file ->
-                    def name = file.name
-                    if (HOOK_CLASS == name) {
-                        println("zhouxin handleDirectoryInput $incremental  found")
-                        def scanFile = new FileInputStream(file)
-                        ClassReader classReader = new ClassReader(scanFile)
-                        ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
-                        ClassVisitor cv = new ModifyClassVisitor(classWriter)
-                        classReader.accept(cv, ClassReader.EXPAND_FRAMES)
-                        scanFile.close()
-                    }
+            directoryInput.file.eachFileRecurse { File file ->
+                def path = file.absolutePath.replace(root, '')
+                if (!leftSlash) {
+                    path = path.replaceAll("\\\\", "/")
+                }
+                if (HOOK_CLASS == path) {
+                    println("zhouxin handleDirectoryInput $incremental  found")
+                    def scanFile = new FileInputStream(file)
+                    ClassReader classReader = new ClassReader(scanFile)
+                    ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
+                    ClassVisitor cv = new ModifyClassVisitor(classWriter)
+                    classReader.accept(cv, ClassReader.EXPAND_FRAMES)
+                    scanFile.close()
                 }
             }
             FileUtils.copyDirectory(directoryInput.file, dest)
@@ -138,7 +154,7 @@ class LogTransform extends Transform{
         // input file
         File src = jarInput.file
         // output file
-        File dest = outputProvider.getContentLocation(destName+"_"+hexName,
+        File dest = outputProvider.getContentLocation(destName+hexName,
                 jarInput.contentTypes, jarInput.scopes, Format.JAR)
         if (incremental) {
             if (jarInput.status == Status.REMOVED) {
@@ -151,6 +167,8 @@ class LogTransform extends Transform{
                 return
             }
         }
+//        println "zhouxin  incremental ${incremental} 名称  路径  ${src.name}  dest ${dest.name} ,status:  ${jarInput.status}  destName : $destName   , hexName： $hexName  , 合并${destName+hexName}   "
+
         if (ScanUtil.shouldProcessPreDexJar(src.absolutePath)){
             if (src){
                 def optJar = new File(src.getParent(),src.name+".opt")
@@ -191,9 +209,8 @@ class LogTransform extends Transform{
                 optJar.renameTo(src)
             }
         }
-        println("zhouxin copyFile src ${src.absolutePath}  dest ${dest.absolutePath}")
+//        println("zhouxin copyFile src ${src.absolutePath}  dest ${dest.absolutePath}")
         FileUtils.copyFile(src, dest)
-
     }
 
 
