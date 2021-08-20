@@ -1,7 +1,9 @@
 plugins {
     id 'com.zx.application'
 }
-
+zx{
+    logTransform false
+}
 android {
 
     defaultConfig {

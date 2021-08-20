@@ -1,6 +1,8 @@
 // mac 路径配置
-#com.zx.android.module:module_home => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Module_Home/module_home
-#com.zx.android.module:module_splash => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Module_Splash/module_splash
+com.zx.android.module:module_home => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Module_Home/module_home
+com.zx.android.module:module_splash => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Module_Splash/module_splash
+com.zx.android.module:module_login => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Module_Login/module_login
+com.zx.android.init:moduleinit => /Users/xiaoxin/Desktop/workspace/Android/Demo/Android_Componentization/Library_Core/moduleinit
 
 // windows 路径配置
 #com.zx.android.module:module_splash => C:/workspace/Android/Demo/android_componentization/Module_Splash/module_splash

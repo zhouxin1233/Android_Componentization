@@ -5,7 +5,7 @@ buildscript {
             url mavenLocalUrl
         }
         maven {
-            url mavenUrl
+            url "https://gitee.com/zhouxin1233/maven/raw/master"
         }
         google()
         mavenCentral()
